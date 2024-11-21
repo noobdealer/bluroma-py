@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>bluroma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>bluroma</h1>
+        {% if user_display_name != "none" %}
+        <h2>Logged in as {{ user_display_name }} </h2>
+        {% else %}
+        <h2>Not logged in</h2>
+        {% endif %}
+    </div>
+    <div class="login">
+        <h2>Log in</h2>
+        <form name="login" id="login" method="POST" action="{{ url_for('login_user') }}">
+            <label for="handle">Username</label>
+            <input type="text" id="handle" name="handle" width="64" maxlength="253" placeholder="noob.quest" required><br>
+            <label for="password">App Password</label>
+            <input type="password" id="password" name="password" width="64" placeholder="hunter2" required>
+            <br>
+            <button type="submit">Login</button>
+            <br>
+        </form>
+        <p>Register on <a href="https://bsky.app">Bluesky</a></p>
+    </div>
+</body>
+</html>

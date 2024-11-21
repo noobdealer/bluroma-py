@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    text-align: center;
+    color: #e1e1e1;
+    background-color: #111111;
+    align-content: center;
+    justify-content: center;
+}
+
+.header {
+    border: 2px solid #e1e1e1;
+    border-radius: 10px;
+    margin: 1em;
+    width: 30%
+}
+
+.login {
+    border: 2px solid #e1e1e1;
+    margin: 1em;
+    padding: 15px;
+    width: 30%;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
