@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://atproto.com"
+Documentation = "https://atproto.blue"
 
 [project.optional-dependencies]
 test = ["pytest"]

@@ -7,15 +7,18 @@
 <body>
     <div class="header">
         <h1>bluroma</h1>
-        {% if user_display_name != "none" %}
-        <h2>Logged in as {{ user_display_name }} </h2>
+        {% if session['user'] %}
+        <h2>Logged in as {{ session['user'] }} </h2>
+        <form action="{{ url_for('logout') }}">
+            <button type="sumbit">Log out</button>
+        </form>
         {% else %}
         <h2>Not logged in</h2>
         {% endif %}
     </div>
     <div class="login">
         <h2>Log in</h2>
-        <form name="login" id="login" method="POST" action="{{ url_for('login_user') }}">
+        <form name="login" id="login" method="POST" action="{{ url_for('login') }}">
             <label for="handle">Username</label>
             <input type="text" id="handle" name="handle" width="64" maxlength="253" placeholder="noob.quest" required><br>
             <label for="password">App Password</label>

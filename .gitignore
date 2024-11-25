@@ -1,1 +1,14 @@
+# User config, files
 *.env
+*.db
+
+# Python-specific
+__pycache__/
+
+# IDE
+.vscode/*
+.idea/*
+
+# Flask
+instance/
+.webassets-cache
