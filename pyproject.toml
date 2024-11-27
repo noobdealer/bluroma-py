@@ -1,41 +1,10 @@
 [project]
 name = "bluroma"
 version = "0.1.0"
-description = "Pleroma-like Bluesky client."
+authors = [
+    {name = "penny", email = "penny@noob.quest"},
+]
+description = "A Pleroma/Akkoma-like Bluesky client."
 readme = "README.md"
 license = {file = "LICENSE"}
-maintainers = [{name = "penny", email = "penny@noob.quest"}]
-classifiers = ["Private :: Do Not Upload"]
-dependencies = [
-    "flask",
-    "atproto",
-]
-
-[project.urls]
-Documentation = "https://atproto.blue"
-
-[project.optional-dependencies]
-test = ["pytest"]
-
-[build-system]
-requires = ["flit_core<4"]
-build-backend = "flit_core.buildapi"
-
-[tool.flit.module]
-name = "bluroma"
-
-[tool.flit.sdist]
-include = [
-    "tests/",
-]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-filterwarnings = ["error"]
-
-[tool.coverage.run]
-branch = true
-source = ["flaskr", "tests"]
-
-[tool.ruff]
-src = ["src"]
+requires-python = ">=3.11.2"
