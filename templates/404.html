@@ -3,12 +3,17 @@
 {% block title %}404 | bluroma{% endblock %}
 
 {% block body %}
-<!-- Works for now. -->
-<div class="container" style="text-align: center; grid-column-start: span 3;">
-    <h1>>404</h1>
+<nav id="nav">
+    <div class="center-nav">
+            <a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='favicon.png') }}"></a>
+    </div>
+</nav>
+<div class="container" style="text-align: center; grid-column-start: 3; grid-row: span 3;">
+    <div class="container-header">
+        <span>Error</span>
+    </div>
+    <h1>404</h1>
     <p>The requested page could not be found.</p>
-    <form>
-        <button formaction="{{ url_for('index') }}">Go home</button>
-    </form>
+    <a href="{{ url_for('dashboard') }}"><button>Go home</button></a>
 </div>
 {% endblock %}
