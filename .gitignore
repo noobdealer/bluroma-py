@@ -4,6 +4,7 @@
 
 # Python-specific
 __pycache__/
+/.venv/
 
 # IDE
 .vscode/*

@@ -3,7 +3,7 @@ import sqlite3
 
 from atproto import Client
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, g
 from flask_bcrypt import Bcrypt
 
 from bluroma.db import db
@@ -17,8 +17,11 @@ resolver = user_resolution
 client = None
 profile = None
 
-session_display_name = "none"
 load_dotenv()
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -36,10 +39,7 @@ def login():
     username = request.form['handle']
     password = request.form['password']
     try:
-        user_did = resolver.resolve_did(username)
-        print("DID logging in:", user_did)
-        user_did_doc = resolver.resolve_did_doc(user_did)
-        user_pds = resolver.resolve_pds(user_did_doc)
+        user_pds = resolver.resolve_pds_from_handle(username)
         client = Client(user_pds)
         profile = client.login(username, password)
         print('Welcome,', profile.display_name)
@@ -59,7 +59,7 @@ def logout():
 if __name__ == '__main__':
     print("Welcome to bluroma")
     if (os.getenv("SECRET_KEY") == "ChangeMeA$AP!") & (os.getenv("DEBUG") == "False"):
-        print("CHANGE YOUR SECRET KEY BEFORE DEPLOYING.")
+        print("CHANGE YOUR SECRET KEY.")
         exit(1)
     print("Connecting to DB...")
     db_conn = sqlite3.connect(os.getenv('DB_NAME'))

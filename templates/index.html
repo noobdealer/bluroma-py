@@ -1,34 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>bluroma</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
-</head>
-<body>
-    <div class="header">
-        <h1>bluroma</h1>
-        {% if session['user'] %}
-        <h2>Logged in as {{ session['user'] }} </h2>
-        <form action="{{ url_for('logout') }}">
-            <button type="sumbit">Log out</button>
-        </form>
-        {% else %}
-        <h2>Not logged in</h2>
-        {% endif %}
+{% extends "base.html" %}
+
+{% block title %}bluroma{% endblock %}
+
+{% block body %}
+<nav id="nav">
+    <div class="center-nav">
+            <a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='favicon.png') }}"></a>
+    </div>
+</nav>
+<div class="container" id="sidebar">
+    <div class="container-header">
+            <span>Log in</span>
     </div>
     <div class="login">
-        <h2>Log in</h2>
         <form name="login" id="login" method="POST" action="{{ url_for('login') }}">
-            <label for="handle">Username</label>
-            <input type="text" id="handle" name="handle" width="64" maxlength="253" placeholder="noob.quest" required><br>
-            <label for="password">App Password</label>
-            <input type="password" id="password" name="password" width="64" placeholder="hunter2" required>
-            <br>
+            <label for="handle">Username</label><br>
+            <input type="text" id="handle" name="handle" maxlength="255" placeholder="noob.quest" required><br>
+            <label for="password">App Password <a href="https://bsky.app/settings/app-passwords">(get here)</a></label><br>
+            <input type="password" id="password" name="password" placeholder="hunter2" required><br>
+            <p>Register on <a href="https://bsky.app">Bluesky</a></p>
             <button type="submit">Login</button>
-            <br>
         </form>
-        <p>Register on <a href="https://bsky.app">Bluesky</a></p>
     </div>
-</body>
-</html>
+</div>
+<div class="container" id="content">
+    <div class="container-header">
+        <span>About</span>
+    </div>
+    <br>
+    <img src="{{ url_for('static', filename='favicon.png') }}" width="100">
+    <h1>bluroma</h1>
+    <h2>An *oma-like Bluesky client.</h2>
+    <h3 style="margin-bottom: 0;">Links</h3>
+    <ul>
+        <li><a href="https://github.com/noobdealer/bluroma-py">GitHub</a></li>
+        <li><a href="https://bsky.app/profile/noob.quest">The developer</a></li>
+    </ul>
+    <br>
+</div>
+{% endblock %}

@@ -1,3 +1,5 @@
+from logging import debug
+
 from atproto import DidDocument
 from atproto_identity.resolver import HandleResolver, DidResolver
 from dotenv import load_dotenv
@@ -16,7 +18,9 @@ def resolve_did_doc(did: str) -> DidDocument:
 def resolve_pds(did_doc: DidDocument) -> str:
     return DidDocument.get_pds_endpoint(did_doc)
 
-def resolve_handle_pds(username: str) -> str:
+def resolve_pds_from_handle(username: str) -> str:
     did = resolve_did(username)
     did_doc = resolve_did_doc(did)
+    debug("Resolving PDS from DID: ", did)
     return resolve_pds(did_doc)
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}404 | bluroma{% endblock %}
+
+{% block body %}
+<!-- Works for now. -->
+<div class="container" style="text-align: center; grid-column-start: span 3;">
+    <h1>>404</h1>
+    <p>The requested page could not be found.</p>
+    <form>
+        <button formaction="{{ url_for('index') }}">Go home</button>
+    </form>
+</div>
+{% endblock %}

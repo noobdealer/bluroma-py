@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>bluroma</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
-</head>
-<body>
-    <div class="header">
-        <h1>bluroma</h1>
-        {% if session['user'] %}
+{% extends "base.html" %}
+
+{% block title %}Dashboard | bluroma{% endblock %}
+
+{% block body %}
+<nav id="nav">
+    <div class="center-nav">
+            <a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='favicon.png') }}"></a>
+    </div>
+</nav>
+<div class="container" id="sidebar">
+    <div class="container-header">
+        <span>Sidebar</span>
+    </div>
+    {% if session['user'] %}
         <h2>Logged in as {{ session['user'] }} </h2>
         <form action="{{ url_for('logout') }}">
             <button type="sumbit">Log out</button>
+            <br>
         </form>
-        {% else %}
+    {% else %}
         <h2>Not logged in</h2>
-        {% endif %}
+    {% endif %}
+</div>
+<div class="container" id="content">
+    <div class="container-header">
+        <span>Dashboard</span>
     </div>
-    <div class="sidebar">
-        <h2>Menu</h2>
-    </div>
-    <div class="content">
-        <h2>Dashboard</h2>
-    </div>
-</body>
-</html>
+</div>
+{% endblock %}
