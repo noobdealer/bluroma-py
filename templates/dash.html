@@ -12,19 +12,32 @@
     <div class="container-header">
         <span>Sidebar</span>
     </div>
-    {% if session['user'] %}
-        <h2>Logged in as {{ session['user'] }} </h2>
-        <form action="{{ url_for('logout') }}">
-            <button type="sumbit">Log out</button>
+    <div>
+        {% if session['user'] %}
+            <h2>Logged in as {{ session['user'] }}</h2>
+            <form action="{{ url_for('logout') }}">
+                <button type="sumbit">Log out</button>
+            </form>
+        {% else %}
+            <h2>Not logged in, you shouldn't see this!</h2>
+        {% endif %}
+    </div>
+    <br>
+    <div class="post-form">
+        <form action="{{ url_for('create_post') }}" method="post" autocomplete="off">
+            <textarea id="post-textbox" name="post-textbox" cols="45" rows="8" placeholder="The car's on fire, and there's no driver at the wheel..."></textarea>
             <br>
+            <button type="submit">Post</button>
         </form>
-    {% else %}
-        <h2>Not logged in</h2>
-    {% endif %}
+    </div>
 </div>
 <div class="container" id="content">
     <div class="container-header">
         <span>Dashboard</span>
+    </div>
+    <div class="dashboard-feed">
+        <h2>Doesn't work yet...</h2>
+        <p>No more posts</p>
     </div>
 </div>
 {% endblock %}

@@ -56,6 +56,10 @@ def logout():
     session.pop_session()
     return redirect(url_for('index'))
 
+@app.route('/api/post', methods=['POST'])
+def create_post():
+    return "Not implemented"
+
 if __name__ == '__main__':
     print("Welcome to bluroma")
     if (os.getenv("SECRET_KEY") == "ChangeMeA$AP!") & (os.getenv("DEBUG") == "False"):
