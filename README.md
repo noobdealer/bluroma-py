@@ -49,6 +49,14 @@ Cool ideas that I feel would make up a "stable" release
     * Bypassing blocked posts
     * Respecting the "users demands authentication" 
 
+## Development
+```
+git clone https://github.com/noobdealer/bluroma-py
+pip install -r requirements.txt
+cp .env.example .env
+python app.py
+```
+
 ## Credits
 * Shoutout to the [Pleroma](https://pleroma.social) and [Akkoma](https://akkoma.social) developers for all of their work, which I've shamelessly copied.
 * Thank you to [MarshalX](https://bsky.app/profile/marshal.dev) for building the ATproto Python packages that I use.
